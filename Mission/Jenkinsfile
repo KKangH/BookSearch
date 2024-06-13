@@ -9,18 +9,18 @@ pipeline {
         }
         stage('Build') {
             steps {
-                bat 'javac -encoding UTF-8 -cp Mission/lib/junit-platform-console-standalone-1.7.1.jar -d classes Mission/src/*.java'
+                bat 'javac -encoding UTF-8 -cp Mission/junit-platform-console-standalone-1.7.1.jar -d classes Mission/src/*.java'
             }
         }
         stage('Test') {
             steps {
-                bat 'java -cp Mission/lib/junit-platform-console-standalone-1.7.1.jar org.junit.platform.console.ConsoleLauncher --scan-classpath > test_result.txt'
+                bat 'java -cp Mission/junit-platform-console-standalone-1.7.1.jar org.junit.platform.console.ConsoleLauncher --scan-classpath > test_result.txt'
             }
         }
 
         stage('Performance Test') {
                 steps {
-                    bat 'java -cp classes;Mission/lib/junit-platform-console-standalone-1.7.1.jar PerformanceTest > performance_results.txt'
+                    bat 'java -cp classes;Mission/junit-platform-console-standalone-1.7.1.jar PerformanceTest > performance_results.txt'
                 }
         }
 
